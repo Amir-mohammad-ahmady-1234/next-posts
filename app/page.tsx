@@ -2,10 +2,11 @@ import { Suspense } from "react";
 
 import Posts from "@/components/posts";
 import { getPosts } from "@/lib/posts";
+import { PostType } from "@/types/postsType";
 
 async function LatestPosts() {
   const latestPosts = await getPosts(2);
-  return <Posts posts={latestPosts as PostsType[]} />;
+  return <Posts posts={latestPosts as PostType[]} />;
 }
 
 export default async function Home() {
