@@ -12,4 +12,5 @@ export interface PostType {
   userFirstName: string;
   createdAt: string;
   content: string;
+  isLiked: boolean;
 }
