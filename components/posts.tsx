@@ -6,6 +6,7 @@ import { formatDate } from "@/lib/format";
 import { PostType } from "@/types/postsType";
 import { togglePostLikeStatus } from "@/actions/posts";
 import LikeButton from "./like-icon";
+import Image, { ImageLoaderProps } from "next/image";
 
 function Post({
   post,
@@ -14,10 +15,25 @@ function Post({
   post: PostType;
   action: (postId: number) => void;
 }) {
+  function ImageLoader(config: ImageLoaderProps) {
+    const startUrl = config.src.split("upload/")[0];
+    const endUrl = config.src.split("upload/")[1];
+    const transformation = `w_200,q_${config.quality}`;
+
+    return `${startUrl}upload/${transformation}/${endUrl}`;
+  }
+
   return (
     <article className="post">
       <div className="post-image">
-        <img src={post.image} alt={post.title} />
+        <Image
+          loader={ImageLoader}
+          src={post.image}
+          width={200}
+          height={120}
+          alt={post.title}
+          quality={50}
+        />
       </div>
       <div className="post-content">
         <header>
