@@ -6,7 +6,6 @@ import { formatDate } from "@/lib/format";
 import { PostType } from "@/types/postsType";
 import { togglePostLikeStatus } from "@/actions/posts";
 import LikeButton from "./like-icon";
-import Image from "next/image";
 
 function Post({
   post,
@@ -18,7 +17,7 @@ function Post({
   return (
     <article className="post">
       <div className="post-image">
-        <Image src={post.image} alt={post.title} />
+        <img src={post.image} alt={post.title} />
       </div>
       <div className="post-content">
         <header>
