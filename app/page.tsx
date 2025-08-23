@@ -4,6 +4,11 @@ import Posts from "@/components/posts";
 import { getPosts } from "@/lib/posts";
 import { PostType } from "@/types/postsType";
 
+export const metadata = {
+  title: "Browse latest food",
+  description: "you can Browse latest food what you want!",
+};
+
 async function LatestPosts() {
   const latestPosts = await getPosts(2);
   return <Posts posts={latestPosts as PostType[]} />;

@@ -2,6 +2,21 @@ import Posts from "@/components/posts";
 import { getPosts } from "@/lib/posts";
 import { PostType } from "@/types/postsType";
 
+// export const metadata = {
+//   title: "Browse All our X posts.",
+//   description: "all post of this site avilable in this path.",
+// };
+
+export async function generateMetadata() {
+  const posts = await getPosts(0);
+  const postLength = posts.length;
+
+  return {
+    title: `Browse All Our ${postLength} Posts!`,
+    description: "see all out posts",
+  };
+}
+
 export default async function FeedPage() {
   const posts = await getPosts(0);
   return (
